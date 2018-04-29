@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+// 顶栏
 class Header extends Component {
   static defaultProps = {
     title: 'Header default'
@@ -8,12 +9,15 @@ class Header extends Component {
   render () {
     return (
       <View style={styles.header}>
-        <Text>{this.props.title}</Text>
+        <Text style={styles.headerText}>
+          {this.props.title}
+        </Text>
       </View>
     )
   }
 }
 
+// 主体布局
 class Main extends Component {
   render () {
     return (
@@ -24,12 +28,13 @@ class Main extends Component {
   }
 }
 
+// APP
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header></Header>
-        <Main></Main>
+        <Header title="Hello World" />
+        <Main />
       </View>
     );
   }
@@ -37,16 +42,27 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 45
+    flex: 1
   },
+  // 顶栏
   header: {
     height: 60,
-    backgroundColor: '#abcdef'
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#FEA53B',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 20,
+    backgroundColor: '#FECC3B'
   },
+  headerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#FFF'
+  },
+  // 主体
   main: {
     flex: 1,
     height: 60,
-    backgroundColor: '#CCC'
+    backgroundColor: '#FFF'
   }
 });
