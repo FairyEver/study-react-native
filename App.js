@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, AlertIOS } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 // APP
 export default class extends Component {
   state = {
@@ -14,15 +14,7 @@ export default class extends Component {
       if (newValue > 10) {
         clearInterval(this.timer);
         this.timer = null;
-        AlertIOS.alert(
-          '倒计时停止',
-          '数到10就停了',
-          [
-            {
-              text: '知道了'
-            }
-          ]
-        )
+        alert('倒计时停止')
       }
     }, 300);
   };
