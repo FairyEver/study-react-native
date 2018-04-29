@@ -4,14 +4,14 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 export default class extends Component {
   state = {
     like: 0
-  }
+  };
   handlePress = () => {
     this.setState({
       like: this.state.like + 1
     })
-  }
+  };
   render() {
-    const { like } = this.state
+    const { like } = this.state;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this.handlePress}>
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   title: {
-    fontSize: 60
+    fontSize: 60,
+    marginTop: 30
   }
 });
