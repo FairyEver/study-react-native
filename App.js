@@ -41,6 +41,7 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  // 最外层容器
   container: {
     flex: 1
   },
