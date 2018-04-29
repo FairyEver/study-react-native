@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, AlertIOS } from 'react-native';
 // APP
 export default class extends Component {
   state = {
     like: 0
   };
-  handlePress = () => {
-    this.setState({
-      like: this.state.like + 1
-    })
+  componentDidMount () {
+    this.timer = setInterval(() => {
+      const newValue = this.state.like + 1;
+      this.setState({
+        like: newValue
+      });
+      if (newValue > 10) {
+        clearInterval(this.timer);
+        this.timer = null;
+        AlertIOS.alert(
+          '倒计时停止',
+          '数到10就停了',
+          [
+            {
+              text: '知道了'
+            }
+          ]
+        )
+      }
+    }, 300);
+  };
+  componentWillUnmount () {
+    clearInterval(this.timer);
   };
   render() {
     const { like } = this.state;
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this.handlePress}>
-          <Image source={require('./assets/like.png')} />
-        </TouchableOpacity>
-        <Text style={styles.title}>
-          Like {like}
-        </Text>
+        {
+          this.state.like <= 10 ? <Text style={styles.title}>[ Like {like} ]</Text> : <Text>end</Text>
+        }
       </View>
     );
   }
