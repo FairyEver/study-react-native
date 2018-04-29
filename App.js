@@ -25,12 +25,10 @@ export default class extends Component {
     const { like } = this.state;
     return (
       <View style={styles.container}>
-        {
-          this.state.like <= 10 ? <Text style={styles.title}>[ Like {like} ]</Text> : <Text>end</Text>
-        }
+        { this.state.like <= 10 ? <Text style={styles.title}>[ Like {like} ]</Text> : <Text>end</Text> }
       </View>
     );
-  }
+  };
 }
 
 const styles = StyleSheet.create({
