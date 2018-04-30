@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+class Show extends Component {
+  state = {
+    count: 0
+  };
+  addCount = (count) => {
+    this.setState({
+      count: this.state.count + count
+    })
+  };
+  render () {
+    return (
+      <Text style={styles.title}>{this.state.count}</Text>
+    )
+  }
+}
+
 // APP
 export default class extends Component {
-  state = {
-    like: 0
+  handlePress = () => {
+    this.Show.addCount(20)
   };
-  componentDidMount () {
-    this.timer = setInterval(() => {
-      const newValue = this.state.like + 1;
-      this.setState({
-        like: newValue
-      });
-      if (newValue > 10) {
-        clearInterval(this.timer);
-        this.timer = null;
-        alert('倒计时停止')
-      }
-    }, 300);
-  };
-  componentWillUnmount () {
-    clearInterval(this.timer);
-  };
-  render() {
-    const { like } = this.state;
+  render () {
     return (
       <View style={styles.container}>
-        { this.state.like <= 10 ? <Text style={styles.title}>[ Like {like} ]</Text> : <Text>end</Text> }
+        <TouchableOpacity onPress={this.handlePress}>
+          <Text style={styles.title}>点我加10</Text>
+        </TouchableOpacity>
+        <Show ref={Show => {this.Show = Show}} />
       </View>
     );
   };
