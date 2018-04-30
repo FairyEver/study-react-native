@@ -20,15 +20,19 @@ class Show extends Component {
 // APP
 export default class extends Component {
   handlePress = () => {
-    this.Show.addCount(20)
+    // 旧的写法
+    // this.Show.addCount(20)
+    this.refs.Show.addCount(20)
   };
   render () {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this.handlePress}>
-          <Text style={styles.title}>点我加10</Text>
+          <Text style={styles.title}>点我加20</Text>
         </TouchableOpacity>
-        <Show ref={Show => {this.Show = Show}} />
+        {/*旧的写法*/}
+        {/*<Show ref={Show => {this.Show = Show}} />*/}
+        <Show ref="Show" />
       </View>
     );
   };
